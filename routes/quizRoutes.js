@@ -25,4 +25,7 @@ router.post('/quizzes/:quizId/questions', addMultipleQuestionsToQuiz);
 // Route for finding questions with the word "capital" in text
 router.get('/quizzes/:quizId/populate', getQuestionsWithKeyword);
 
+// Route to update a quiz by ID (EDIT QUIZ)
+router.put('/quizzes/:quizId', updateQuiz);
+
 module.exports = router;

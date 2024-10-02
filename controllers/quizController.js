@@ -100,3 +100,26 @@ exports.getQuestionsWithKeyword = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// Update a quiz by ID
+exports.updateQuiz = async (req, res) => {
+  try {
+    const quizId = req.params.quizId;
+    const updatedQuizData = req.body;
+
+    // Find and update the quiz
+    const updatedQuiz = await Quiz.findByIdAndUpdate(
+      quizId,
+      updatedQuizData,
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedQuiz) {
+      return res.status(404).json({ message: 'Quiz not found' });
+    }
+
+    res.status(200).json(updatedQuiz);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
