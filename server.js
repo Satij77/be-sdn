@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const quizRoutes = require('./routes/quizRoutes');
+const questionRoutes = require('./routes/questionRoutes'); // Import question routes
 require('dotenv').config();
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api', quizRoutes);
+app.use('/api', questionRoutes); // Use question routes
 
 // Connect to the database
 connectDB();
